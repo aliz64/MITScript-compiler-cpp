@@ -1,0 +1,148 @@
+function
+{
+	functions =
+	[
+		function
+		{
+			functions = [],
+			constants = [None, 0, "", 1],
+			parameter_count = 3,
+			local_vars = [im, x, y, i, j, line, ch],
+			local_ref_vars = [],
+			free_vars = [],
+			names = [print],
+			instructions = 
+			[
+				load_const	1
+				store_local	3
+				load_local	3
+				load_local	1
+				swap
+				gt
+				if	2
+				goto	34
+				load_const	1
+				store_local	4
+				load_const	2
+				store_local	5
+				load_local	4
+				load_local	2
+				swap
+				gt
+				if	2
+				goto	15
+				load_local	0
+				load_local	3
+				load_local	4
+				call	2
+				store_local	6
+				load_local	5
+				load_local	6
+				add
+				store_local	5
+				load_local	4
+				load_const	3
+				add
+				store_local	4
+				goto	-19
+				load_global	0
+				load_local	5
+				call	1
+				pop
+				load_local	3
+				load_const	3
+				add
+				store_local	3
+				goto	-38
+				load_const	0
+				return
+			]
+		},
+		function
+		{
+			functions = [],
+			constants = [None, "x", " "],
+			parameter_count = 2,
+			local_vars = [x, y],
+			local_ref_vars = [],
+			free_vars = [],
+			names = [p, x, y],
+			instructions = 
+			[
+				load_local	0
+				load_global	0
+				field_load	1
+				eq
+				load_local	1
+				load_global	0
+				field_load	2
+				eq
+				and
+				if	2
+				goto	4
+				load_const	1
+				return
+				goto	1
+				load_const	2
+				return
+			]
+		}
+	],
+	constants = [None, 0, 30, 1],
+	parameter_count = 0,
+	local_vars = [],
+	local_ref_vars = [],
+	free_vars = [],
+	names = [print, intcast, input, consolePrint, p, im, i, x, y],
+	instructions = 
+	[
+		load_func	0
+		alloc_closure	0
+		store_global	0
+		load_func	1
+		alloc_closure	0
+		store_global	1
+		load_func	2
+		alloc_closure	0
+		store_global	2
+		load_func	3
+		alloc_closure	0
+		store_global	3
+		alloc_record
+		dup
+		load_const	1
+		field_store	7
+		dup
+		load_const	1
+		field_store	8
+		store_global	4
+		load_func	4
+		alloc_closure	0
+		store_global	5
+		load_const	1
+		store_global	6
+		load_global	6
+		load_const	2
+		swap
+		gt
+		if	2
+		goto	18
+		load_global	3
+		load_global	5
+		load_const	2
+		load_const	2
+		call	3
+		pop
+		load_global	4
+		load_global	6
+		field_store	7
+		load_global	4
+		load_global	6
+		field_store	8
+		load_global	6
+		load_const	3
+		add
+		store_global	6
+		goto	-22
+	]
+}

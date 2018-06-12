@@ -1,0 +1,49 @@
+function
+{
+	functions =
+	[
+
+	],
+	constants = [None, 4, 7, 9, "should throw an Uninitialized Variable Exception", "Can't print this: "],
+	parameter_count = 0,
+	local_vars = [],
+	local_ref_vars = [],
+	free_vars = [],
+	names = [print, intcast, input, y, z, x],
+	instructions = 
+	[
+		load_func	0
+		alloc_closure	0
+		store_global	0
+		load_func	1
+		alloc_closure	0
+		store_global	1
+		load_func	2
+		alloc_closure	0
+		store_global	2
+		load_const	1
+		store_global	3
+		load_global	3
+		load_const	2
+		gt
+		if	2
+		goto	4
+		load_const	3
+		store_global	4
+		goto	1
+		load_global	0
+		load_const	4
+		call	1
+		pop
+		load_global	4
+		load_global	3
+		add
+		store_global	5
+		load_global	0
+		load_const	5
+		load_global	5
+		add
+		call	1
+		pop
+	]
+}

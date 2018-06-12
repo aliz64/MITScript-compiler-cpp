@@ -1,0 +1,1592 @@
+Grammar
+
+    0 $accept: Program $end
+
+    1 Program: StatementList
+
+    2 StatementList: StatementList Statement
+    3              | %empty
+
+    4 Block: LEFT_BRA StatementList RIGHT_BRA
+
+    5 Statement: Global
+    6          | Assignment
+    7          | CallStatement
+    8          | IfStatement
+    9          | WhileLoop
+   10          | Return
+
+   11 Global: GLOBAL NAME SEMICOLON
+
+   12 Assignment: LHS ASSN Expression SEMICOLON
+
+   13 CallStatement: Call SEMICOLON
+
+   14 IfStatement: IF LEFT_PARAN Expression RIGHT_PARAN Block ELSE Block
+   15            | IF LEFT_PARAN Expression RIGHT_PARAN Block
+
+   16 WhileLoop: WHILE LEFT_PARAN Expression RIGHT_PARAN Block
+
+   17 Return: RETURN Expression SEMICOLON
+
+   18 Expression: Function
+   19           | Boolean
+   20           | Record
+
+   21 Function: FUN LEFT_PARAN ArgList RIGHT_PARAN Block
+   22         | FUN LEFT_PARAN RIGHT_PARAN Block
+
+   23 ArgList: NAME
+   24        | ArgList COMMA NAME
+
+   25 Boolean: Conjunction
+   26        | Conjunction OR Boolean
+
+   27 Conjunction: BoolUnit
+   28            | BoolUnit AND Conjunction
+
+   29 BoolUnit: NOT Predicate
+   30         | Predicate
+
+   31 Predicate: Arithmetic
+   32          | Arithmetic GRTN Arithmetic
+   33          | Arithmetic LSTN Arithmetic
+   34          | Arithmetic GRTNEQ Arithmetic
+   35          | Arithmetic LSTNEQ Arithmetic
+   36          | Arithmetic EQ Arithmetic
+
+   37 Arithmetic: Product
+   38           | Arithmetic PLUS Product
+   39           | Arithmetic MINUS Product
+
+   40 Product: Unit
+   41        | Product MULT Unit
+   42        | Product DIVIDE Unit
+
+   43 Unit: Unit_UNSIGNED
+   44     | MINUS Unit_UNSIGNED
+
+   45 Unit_UNSIGNED: LHS
+   46              | Constant
+   47              | Call
+   48              | LEFT_PARAN Boolean RIGHT_PARAN
+
+   49 LHS: NAME
+   50    | LHS DOT NAME
+   51    | LHS LEFT_SQR Expression RIGHT_SQR
+
+   52 Call: LHS LEFT_PARAN CalledArgList RIGHT_PARAN
+   53     | LHS LEFT_PARAN RIGHT_PARAN
+
+   54 CalledArgList: Expression
+   55              | CalledArgList COMMA Expression
+
+   56 Record: LEFT_BRA RIGHT_BRA
+   57       | LEFT_BRA RecordList RIGHT_BRA
+
+   58 RecordList: NAME COLON Expression SEMICOLON
+   59           | RecordList NAME COLON Expression SEMICOLON
+
+   60 Constant: T_int
+   61         | T_str
+   62         | T_bool
+   63         | NONE_CONST
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+T_int (258) 60
+T_str (259) 61
+T_bool (260) 62
+NAME (261) 11 23 24 49 50 58 59
+GLOBAL (262) 11
+ASSN (263) 12
+LEFT_BRA (264) 4 56 57
+RIGHT_BRA (265) 4 56 57
+IF (266) 14 15
+WHILE (267) 16
+NOT (268) 29
+SEMICOLON (269) 11 12 13 17 58 59
+LEFT_PARAN (270) 14 15 16 21 22 48 52 53
+RIGHT_PARAN (271) 14 15 16 21 22 48 52 53
+RETURN (272) 17
+FUN (273) 21 22
+PLUS (274) 38
+MINUS (275) 39 44
+OR (276) 26
+RIGHT_SQR (277) 51
+LEFT_SQR (278) 51
+MULT (279) 41
+DIVIDE (280) 42
+COLON (281) 58 59
+AND (282) 28
+NONE_CONST (283) 63
+GRTNEQ (284) 34
+LSTNEQ (285) 35
+GRTN (286) 32
+LSTN (287) 33
+EQ (288) 36
+COMMA (289) 24 55
+ELSE (290) 14
+DOT (291) 50
+
+
+Nonterminals, with rules where they appear
+
+$accept (37)
+    on left: 0
+Program (38)
+    on left: 1, on right: 0
+StatementList (39)
+    on left: 2 3, on right: 1 2 4
+Block (40)
+    on left: 4, on right: 14 15 16 21 22
+Statement (41)
+    on left: 5 6 7 8 9 10, on right: 2
+Global (42)
+    on left: 11, on right: 5
+Assignment (43)
+    on left: 12, on right: 6
+CallStatement (44)
+    on left: 13, on right: 7
+IfStatement (45)
+    on left: 14 15, on right: 8
+WhileLoop (46)
+    on left: 16, on right: 9
+Return (47)
+    on left: 17, on right: 10
+Expression (48)
+    on left: 18 19 20, on right: 12 14 15 16 17 51 54 55 58 59
+Function (49)
+    on left: 21 22, on right: 18
+ArgList (50)
+    on left: 23 24, on right: 21 24
+Boolean (51)
+    on left: 25 26, on right: 19 26 48
+Conjunction (52)
+    on left: 27 28, on right: 25 26 28
+BoolUnit (53)
+    on left: 29 30, on right: 27 28
+Predicate (54)
+    on left: 31 32 33 34 35 36, on right: 29 30
+Arithmetic (55)
+    on left: 37 38 39, on right: 31 32 33 34 35 36 38 39
+Product (56)
+    on left: 40 41 42, on right: 37 38 39 41 42
+Unit (57)
+    on left: 43 44, on right: 40 41 42
+Unit_UNSIGNED (58)
+    on left: 45 46 47 48, on right: 43 44
+LHS (59)
+    on left: 49 50 51, on right: 12 45 50 51 52 53
+Call (60)
+    on left: 52 53, on right: 13 47
+CalledArgList (61)
+    on left: 54 55, on right: 52 55
+Record (62)
+    on left: 56 57, on right: 20
+RecordList (63)
+    on left: 58 59, on right: 57 59
+Constant (64)
+    on left: 60 61 62 63, on right: 46
+
+
+State 0
+
+    0 $accept: . Program $end
+
+    $default  reduce using rule 3 (StatementList)
+
+    Program        go to state 1
+    StatementList  go to state 2
+
+
+State 1
+
+    0 $accept: Program . $end
+
+    $end  shift, and go to state 3
+
+
+State 2
+
+    1 Program: StatementList .
+    2 StatementList: StatementList . Statement
+
+    NAME    shift, and go to state 4
+    GLOBAL  shift, and go to state 5
+    IF      shift, and go to state 6
+    WHILE   shift, and go to state 7
+    RETURN  shift, and go to state 8
+
+    $default  reduce using rule 1 (Program)
+
+    Statement      go to state 9
+    Global         go to state 10
+    Assignment     go to state 11
+    CallStatement  go to state 12
+    IfStatement    go to state 13
+    WhileLoop      go to state 14
+    Return         go to state 15
+    LHS            go to state 16
+    Call           go to state 17
+
+
+State 3
+
+    0 $accept: Program $end .
+
+    $default  accept
+
+
+State 4
+
+   49 LHS: NAME .
+
+    $default  reduce using rule 49 (LHS)
+
+
+State 5
+
+   11 Global: GLOBAL . NAME SEMICOLON
+
+    NAME  shift, and go to state 18
+
+
+State 6
+
+   14 IfStatement: IF . LEFT_PARAN Expression RIGHT_PARAN Block ELSE Block
+   15            | IF . LEFT_PARAN Expression RIGHT_PARAN Block
+
+    LEFT_PARAN  shift, and go to state 19
+
+
+State 7
+
+   16 WhileLoop: WHILE . LEFT_PARAN Expression RIGHT_PARAN Block
+
+    LEFT_PARAN  shift, and go to state 20
+
+
+State 8
+
+   17 Return: RETURN . Expression SEMICOLON
+
+    T_int       shift, and go to state 21
+    T_str       shift, and go to state 22
+    T_bool      shift, and go to state 23
+    NAME        shift, and go to state 4
+    LEFT_BRA    shift, and go to state 24
+    NOT         shift, and go to state 25
+    LEFT_PARAN  shift, and go to state 26
+    FUN         shift, and go to state 27
+    MINUS       shift, and go to state 28
+    NONE_CONST  shift, and go to state 29
+
+    Expression     go to state 30
+    Function       go to state 31
+    Boolean        go to state 32
+    Conjunction    go to state 33
+    BoolUnit       go to state 34
+    Predicate      go to state 35
+    Arithmetic     go to state 36
+    Product        go to state 37
+    Unit           go to state 38
+    Unit_UNSIGNED  go to state 39
+    LHS            go to state 40
+    Call           go to state 41
+    Record         go to state 42
+    Constant       go to state 43
+
+
+State 9
+
+    2 StatementList: StatementList Statement .
+
+    $default  reduce using rule 2 (StatementList)
+
+
+State 10
+
+    5 Statement: Global .
+
+    $default  reduce using rule 5 (Statement)
+
+
+State 11
+
+    6 Statement: Assignment .
+
+    $default  reduce using rule 6 (Statement)
+
+
+State 12
+
+    7 Statement: CallStatement .
+
+    $default  reduce using rule 7 (Statement)
+
+
+State 13
+
+    8 Statement: IfStatement .
+
+    $default  reduce using rule 8 (Statement)
+
+
+State 14
+
+    9 Statement: WhileLoop .
+
+    $default  reduce using rule 9 (Statement)
+
+
+State 15
+
+   10 Statement: Return .
+
+    $default  reduce using rule 10 (Statement)
+
+
+State 16
+
+   12 Assignment: LHS . ASSN Expression SEMICOLON
+   50 LHS: LHS . DOT NAME
+   51    | LHS . LEFT_SQR Expression RIGHT_SQR
+   52 Call: LHS . LEFT_PARAN CalledArgList RIGHT_PARAN
+   53     | LHS . LEFT_PARAN RIGHT_PARAN
+
+    ASSN        shift, and go to state 44
+    LEFT_PARAN  shift, and go to state 45
+    LEFT_SQR    shift, and go to state 46
+    DOT         shift, and go to state 47
+
+
+State 17
+
+   13 CallStatement: Call . SEMICOLON
+
+    SEMICOLON  shift, and go to state 48
+
+
+State 18
+
+   11 Global: GLOBAL NAME . SEMICOLON
+
+    SEMICOLON  shift, and go to state 49
+
+
+State 19
+
+   14 IfStatement: IF LEFT_PARAN . Expression RIGHT_PARAN Block ELSE Block
+   15            | IF LEFT_PARAN . Expression RIGHT_PARAN Block
+
+    T_int       shift, and go to state 21
+    T_str       shift, and go to state 22
+    T_bool      shift, and go to state 23
+    NAME        shift, and go to state 4
+    LEFT_BRA    shift, and go to state 24
+    NOT         shift, and go to state 25
+    LEFT_PARAN  shift, and go to state 26
+    FUN         shift, and go to state 27
+    MINUS       shift, and go to state 28
+    NONE_CONST  shift, and go to state 29
+
+    Expression     go to state 50
+    Function       go to state 31
+    Boolean        go to state 32
+    Conjunction    go to state 33
+    BoolUnit       go to state 34
+    Predicate      go to state 35
+    Arithmetic     go to state 36
+    Product        go to state 37
+    Unit           go to state 38
+    Unit_UNSIGNED  go to state 39
+    LHS            go to state 40
+    Call           go to state 41
+    Record         go to state 42
+    Constant       go to state 43
+
+
+State 20
+
+   16 WhileLoop: WHILE LEFT_PARAN . Expression RIGHT_PARAN Block
+
+    T_int       shift, and go to state 21
+    T_str       shift, and go to state 22
+    T_bool      shift, and go to state 23
+    NAME        shift, and go to state 4
+    LEFT_BRA    shift, and go to state 24
+    NOT         shift, and go to state 25
+    LEFT_PARAN  shift, and go to state 26
+    FUN         shift, and go to state 27
+    MINUS       shift, and go to state 28
+    NONE_CONST  shift, and go to state 29
+
+    Expression     go to state 51
+    Function       go to state 31
+    Boolean        go to state 32
+    Conjunction    go to state 33
+    BoolUnit       go to state 34
+    Predicate      go to state 35
+    Arithmetic     go to state 36
+    Product        go to state 37
+    Unit           go to state 38
+    Unit_UNSIGNED  go to state 39
+    LHS            go to state 40
+    Call           go to state 41
+    Record         go to state 42
+    Constant       go to state 43
+
+
+State 21
+
+   60 Constant: T_int .
+
+    $default  reduce using rule 60 (Constant)
+
+
+State 22
+
+   61 Constant: T_str .
+
+    $default  reduce using rule 61 (Constant)
+
+
+State 23
+
+   62 Constant: T_bool .
+
+    $default  reduce using rule 62 (Constant)
+
+
+State 24
+
+   56 Record: LEFT_BRA . RIGHT_BRA
+   57       | LEFT_BRA . RecordList RIGHT_BRA
+
+    NAME       shift, and go to state 52
+    RIGHT_BRA  shift, and go to state 53
+
+    RecordList  go to state 54
+
+
+State 25
+
+   29 BoolUnit: NOT . Predicate
+
+    T_int       shift, and go to state 21
+    T_str       shift, and go to state 22
+    T_bool      shift, and go to state 23
+    NAME        shift, and go to state 4
+    LEFT_PARAN  shift, and go to state 26
+    MINUS       shift, and go to state 28
+    NONE_CONST  shift, and go to state 29
+
+    Predicate      go to state 55
+    Arithmetic     go to state 36
+    Product        go to state 37
+    Unit           go to state 38
+    Unit_UNSIGNED  go to state 39
+    LHS            go to state 40
+    Call           go to state 41
+    Constant       go to state 43
+
+
+State 26
+
+   48 Unit_UNSIGNED: LEFT_PARAN . Boolean RIGHT_PARAN
+
+    T_int       shift, and go to state 21
+    T_str       shift, and go to state 22
+    T_bool      shift, and go to state 23
+    NAME        shift, and go to state 4
+    NOT         shift, and go to state 25
+    LEFT_PARAN  shift, and go to state 26
+    MINUS       shift, and go to state 28
+    NONE_CONST  shift, and go to state 29
+
+    Boolean        go to state 56
+    Conjunction    go to state 33
+    BoolUnit       go to state 34
+    Predicate      go to state 35
+    Arithmetic     go to state 36
+    Product        go to state 37
+    Unit           go to state 38
+    Unit_UNSIGNED  go to state 39
+    LHS            go to state 40
+    Call           go to state 41
+    Constant       go to state 43
+
+
+State 27
+
+   21 Function: FUN . LEFT_PARAN ArgList RIGHT_PARAN Block
+   22         | FUN . LEFT_PARAN RIGHT_PARAN Block
+
+    LEFT_PARAN  shift, and go to state 57
+
+
+State 28
+
+   44 Unit: MINUS . Unit_UNSIGNED
+
+    T_int       shift, and go to state 21
+    T_str       shift, and go to state 22
+    T_bool      shift, and go to state 23
+    NAME        shift, and go to state 4
+    LEFT_PARAN  shift, and go to state 26
+    NONE_CONST  shift, and go to state 29
+
+    Unit_UNSIGNED  go to state 58
+    LHS            go to state 40
+    Call           go to state 41
+    Constant       go to state 43
+
+
+State 29
+
+   63 Constant: NONE_CONST .
+
+    $default  reduce using rule 63 (Constant)
+
+
+State 30
+
+   17 Return: RETURN Expression . SEMICOLON
+
+    SEMICOLON  shift, and go to state 59
+
+
+State 31
+
+   18 Expression: Function .
+
+    $default  reduce using rule 18 (Expression)
+
+
+State 32
+
+   19 Expression: Boolean .
+
+    $default  reduce using rule 19 (Expression)
+
+
+State 33
+
+   25 Boolean: Conjunction .
+   26        | Conjunction . OR Boolean
+
+    OR  shift, and go to state 60
+
+    $default  reduce using rule 25 (Boolean)
+
+
+State 34
+
+   27 Conjunction: BoolUnit .
+   28            | BoolUnit . AND Conjunction
+
+    AND  shift, and go to state 61
+
+    $default  reduce using rule 27 (Conjunction)
+
+
+State 35
+
+   30 BoolUnit: Predicate .
+
+    $default  reduce using rule 30 (BoolUnit)
+
+
+State 36
+
+   31 Predicate: Arithmetic .
+   32          | Arithmetic . GRTN Arithmetic
+   33          | Arithmetic . LSTN Arithmetic
+   34          | Arithmetic . GRTNEQ Arithmetic
+   35          | Arithmetic . LSTNEQ Arithmetic
+   36          | Arithmetic . EQ Arithmetic
+   38 Arithmetic: Arithmetic . PLUS Product
+   39           | Arithmetic . MINUS Product
+
+    PLUS    shift, and go to state 62
+    MINUS   shift, and go to state 63
+    GRTNEQ  shift, and go to state 64
+    LSTNEQ  shift, and go to state 65
+    GRTN    shift, and go to state 66
+    LSTN    shift, and go to state 67
+    EQ      shift, and go to state 68
+
+    $default  reduce using rule 31 (Predicate)
+
+
+State 37
+
+   37 Arithmetic: Product .
+   41 Product: Product . MULT Unit
+   42        | Product . DIVIDE Unit
+
+    MULT    shift, and go to state 69
+    DIVIDE  shift, and go to state 70
+
+    $default  reduce using rule 37 (Arithmetic)
+
+
+State 38
+
+   40 Product: Unit .
+
+    $default  reduce using rule 40 (Product)
+
+
+State 39
+
+   43 Unit: Unit_UNSIGNED .
+
+    $default  reduce using rule 43 (Unit)
+
+
+State 40
+
+   45 Unit_UNSIGNED: LHS .
+   50 LHS: LHS . DOT NAME
+   51    | LHS . LEFT_SQR Expression RIGHT_SQR
+   52 Call: LHS . LEFT_PARAN CalledArgList RIGHT_PARAN
+   53     | LHS . LEFT_PARAN RIGHT_PARAN
+
+    LEFT_PARAN  shift, and go to state 45
+    LEFT_SQR    shift, and go to state 46
+    DOT         shift, and go to state 47
+
+    $default  reduce using rule 45 (Unit_UNSIGNED)
+
+
+State 41
+
+   47 Unit_UNSIGNED: Call .
+
+    $default  reduce using rule 47 (Unit_UNSIGNED)
+
+
+State 42
+
+   20 Expression: Record .
+
+    $default  reduce using rule 20 (Expression)
+
+
+State 43
+
+   46 Unit_UNSIGNED: Constant .
+
+    $default  reduce using rule 46 (Unit_UNSIGNED)
+
+
+State 44
+
+   12 Assignment: LHS ASSN . Expression SEMICOLON
+
+    T_int       shift, and go to state 21
+    T_str       shift, and go to state 22
+    T_bool      shift, and go to state 23
+    NAME        shift, and go to state 4
+    LEFT_BRA    shift, and go to state 24
+    NOT         shift, and go to state 25
+    LEFT_PARAN  shift, and go to state 26
+    FUN         shift, and go to state 27
+    MINUS       shift, and go to state 28
+    NONE_CONST  shift, and go to state 29
+
+    Expression     go to state 71
+    Function       go to state 31
+    Boolean        go to state 32
+    Conjunction    go to state 33
+    BoolUnit       go to state 34
+    Predicate      go to state 35
+    Arithmetic     go to state 36
+    Product        go to state 37
+    Unit           go to state 38
+    Unit_UNSIGNED  go to state 39
+    LHS            go to state 40
+    Call           go to state 41
+    Record         go to state 42
+    Constant       go to state 43
+
+
+State 45
+
+   52 Call: LHS LEFT_PARAN . CalledArgList RIGHT_PARAN
+   53     | LHS LEFT_PARAN . RIGHT_PARAN
+
+    T_int        shift, and go to state 21
+    T_str        shift, and go to state 22
+    T_bool       shift, and go to state 23
+    NAME         shift, and go to state 4
+    LEFT_BRA     shift, and go to state 24
+    NOT          shift, and go to state 25
+    LEFT_PARAN   shift, and go to state 26
+    RIGHT_PARAN  shift, and go to state 72
+    FUN          shift, and go to state 27
+    MINUS        shift, and go to state 28
+    NONE_CONST   shift, and go to state 29
+
+    Expression     go to state 73
+    Function       go to state 31
+    Boolean        go to state 32
+    Conjunction    go to state 33
+    BoolUnit       go to state 34
+    Predicate      go to state 35
+    Arithmetic     go to state 36
+    Product        go to state 37
+    Unit           go to state 38
+    Unit_UNSIGNED  go to state 39
+    LHS            go to state 40
+    Call           go to state 41
+    CalledArgList  go to state 74
+    Record         go to state 42
+    Constant       go to state 43
+
+
+State 46
+
+   51 LHS: LHS LEFT_SQR . Expression RIGHT_SQR
+
+    T_int       shift, and go to state 21
+    T_str       shift, and go to state 22
+    T_bool      shift, and go to state 23
+    NAME        shift, and go to state 4
+    LEFT_BRA    shift, and go to state 24
+    NOT         shift, and go to state 25
+    LEFT_PARAN  shift, and go to state 26
+    FUN         shift, and go to state 27
+    MINUS       shift, and go to state 28
+    NONE_CONST  shift, and go to state 29
+
+    Expression     go to state 75
+    Function       go to state 31
+    Boolean        go to state 32
+    Conjunction    go to state 33
+    BoolUnit       go to state 34
+    Predicate      go to state 35
+    Arithmetic     go to state 36
+    Product        go to state 37
+    Unit           go to state 38
+    Unit_UNSIGNED  go to state 39
+    LHS            go to state 40
+    Call           go to state 41
+    Record         go to state 42
+    Constant       go to state 43
+
+
+State 47
+
+   50 LHS: LHS DOT . NAME
+
+    NAME  shift, and go to state 76
+
+
+State 48
+
+   13 CallStatement: Call SEMICOLON .
+
+    $default  reduce using rule 13 (CallStatement)
+
+
+State 49
+
+   11 Global: GLOBAL NAME SEMICOLON .
+
+    $default  reduce using rule 11 (Global)
+
+
+State 50
+
+   14 IfStatement: IF LEFT_PARAN Expression . RIGHT_PARAN Block ELSE Block
+   15            | IF LEFT_PARAN Expression . RIGHT_PARAN Block
+
+    RIGHT_PARAN  shift, and go to state 77
+
+
+State 51
+
+   16 WhileLoop: WHILE LEFT_PARAN Expression . RIGHT_PARAN Block
+
+    RIGHT_PARAN  shift, and go to state 78
+
+
+State 52
+
+   58 RecordList: NAME . COLON Expression SEMICOLON
+
+    COLON  shift, and go to state 79
+
+
+State 53
+
+   56 Record: LEFT_BRA RIGHT_BRA .
+
+    $default  reduce using rule 56 (Record)
+
+
+State 54
+
+   57 Record: LEFT_BRA RecordList . RIGHT_BRA
+   59 RecordList: RecordList . NAME COLON Expression SEMICOLON
+
+    NAME       shift, and go to state 80
+    RIGHT_BRA  shift, and go to state 81
+
+
+State 55
+
+   29 BoolUnit: NOT Predicate .
+
+    $default  reduce using rule 29 (BoolUnit)
+
+
+State 56
+
+   48 Unit_UNSIGNED: LEFT_PARAN Boolean . RIGHT_PARAN
+
+    RIGHT_PARAN  shift, and go to state 82
+
+
+State 57
+
+   21 Function: FUN LEFT_PARAN . ArgList RIGHT_PARAN Block
+   22         | FUN LEFT_PARAN . RIGHT_PARAN Block
+
+    NAME         shift, and go to state 83
+    RIGHT_PARAN  shift, and go to state 84
+
+    ArgList  go to state 85
+
+
+State 58
+
+   44 Unit: MINUS Unit_UNSIGNED .
+
+    $default  reduce using rule 44 (Unit)
+
+
+State 59
+
+   17 Return: RETURN Expression SEMICOLON .
+
+    $default  reduce using rule 17 (Return)
+
+
+State 60
+
+   26 Boolean: Conjunction OR . Boolean
+
+    T_int       shift, and go to state 21
+    T_str       shift, and go to state 22
+    T_bool      shift, and go to state 23
+    NAME        shift, and go to state 4
+    NOT         shift, and go to state 25
+    LEFT_PARAN  shift, and go to state 26
+    MINUS       shift, and go to state 28
+    NONE_CONST  shift, and go to state 29
+
+    Boolean        go to state 86
+    Conjunction    go to state 33
+    BoolUnit       go to state 34
+    Predicate      go to state 35
+    Arithmetic     go to state 36
+    Product        go to state 37
+    Unit           go to state 38
+    Unit_UNSIGNED  go to state 39
+    LHS            go to state 40
+    Call           go to state 41
+    Constant       go to state 43
+
+
+State 61
+
+   28 Conjunction: BoolUnit AND . Conjunction
+
+    T_int       shift, and go to state 21
+    T_str       shift, and go to state 22
+    T_bool      shift, and go to state 23
+    NAME        shift, and go to state 4
+    NOT         shift, and go to state 25
+    LEFT_PARAN  shift, and go to state 26
+    MINUS       shift, and go to state 28
+    NONE_CONST  shift, and go to state 29
+
+    Conjunction    go to state 87
+    BoolUnit       go to state 34
+    Predicate      go to state 35
+    Arithmetic     go to state 36
+    Product        go to state 37
+    Unit           go to state 38
+    Unit_UNSIGNED  go to state 39
+    LHS            go to state 40
+    Call           go to state 41
+    Constant       go to state 43
+
+
+State 62
+
+   38 Arithmetic: Arithmetic PLUS . Product
+
+    T_int       shift, and go to state 21
+    T_str       shift, and go to state 22
+    T_bool      shift, and go to state 23
+    NAME        shift, and go to state 4
+    LEFT_PARAN  shift, and go to state 26
+    MINUS       shift, and go to state 28
+    NONE_CONST  shift, and go to state 29
+
+    Product        go to state 88
+    Unit           go to state 38
+    Unit_UNSIGNED  go to state 39
+    LHS            go to state 40
+    Call           go to state 41
+    Constant       go to state 43
+
+
+State 63
+
+   39 Arithmetic: Arithmetic MINUS . Product
+
+    T_int       shift, and go to state 21
+    T_str       shift, and go to state 22
+    T_bool      shift, and go to state 23
+    NAME        shift, and go to state 4
+    LEFT_PARAN  shift, and go to state 26
+    MINUS       shift, and go to state 28
+    NONE_CONST  shift, and go to state 29
+
+    Product        go to state 89
+    Unit           go to state 38
+    Unit_UNSIGNED  go to state 39
+    LHS            go to state 40
+    Call           go to state 41
+    Constant       go to state 43
+
+
+State 64
+
+   34 Predicate: Arithmetic GRTNEQ . Arithmetic
+
+    T_int       shift, and go to state 21
+    T_str       shift, and go to state 22
+    T_bool      shift, and go to state 23
+    NAME        shift, and go to state 4
+    LEFT_PARAN  shift, and go to state 26
+    MINUS       shift, and go to state 28
+    NONE_CONST  shift, and go to state 29
+
+    Arithmetic     go to state 90
+    Product        go to state 37
+    Unit           go to state 38
+    Unit_UNSIGNED  go to state 39
+    LHS            go to state 40
+    Call           go to state 41
+    Constant       go to state 43
+
+
+State 65
+
+   35 Predicate: Arithmetic LSTNEQ . Arithmetic
+
+    T_int       shift, and go to state 21
+    T_str       shift, and go to state 22
+    T_bool      shift, and go to state 23
+    NAME        shift, and go to state 4
+    LEFT_PARAN  shift, and go to state 26
+    MINUS       shift, and go to state 28
+    NONE_CONST  shift, and go to state 29
+
+    Arithmetic     go to state 91
+    Product        go to state 37
+    Unit           go to state 38
+    Unit_UNSIGNED  go to state 39
+    LHS            go to state 40
+    Call           go to state 41
+    Constant       go to state 43
+
+
+State 66
+
+   32 Predicate: Arithmetic GRTN . Arithmetic
+
+    T_int       shift, and go to state 21
+    T_str       shift, and go to state 22
+    T_bool      shift, and go to state 23
+    NAME        shift, and go to state 4
+    LEFT_PARAN  shift, and go to state 26
+    MINUS       shift, and go to state 28
+    NONE_CONST  shift, and go to state 29
+
+    Arithmetic     go to state 92
+    Product        go to state 37
+    Unit           go to state 38
+    Unit_UNSIGNED  go to state 39
+    LHS            go to state 40
+    Call           go to state 41
+    Constant       go to state 43
+
+
+State 67
+
+   33 Predicate: Arithmetic LSTN . Arithmetic
+
+    T_int       shift, and go to state 21
+    T_str       shift, and go to state 22
+    T_bool      shift, and go to state 23
+    NAME        shift, and go to state 4
+    LEFT_PARAN  shift, and go to state 26
+    MINUS       shift, and go to state 28
+    NONE_CONST  shift, and go to state 29
+
+    Arithmetic     go to state 93
+    Product        go to state 37
+    Unit           go to state 38
+    Unit_UNSIGNED  go to state 39
+    LHS            go to state 40
+    Call           go to state 41
+    Constant       go to state 43
+
+
+State 68
+
+   36 Predicate: Arithmetic EQ . Arithmetic
+
+    T_int       shift, and go to state 21
+    T_str       shift, and go to state 22
+    T_bool      shift, and go to state 23
+    NAME        shift, and go to state 4
+    LEFT_PARAN  shift, and go to state 26
+    MINUS       shift, and go to state 28
+    NONE_CONST  shift, and go to state 29
+
+    Arithmetic     go to state 94
+    Product        go to state 37
+    Unit           go to state 38
+    Unit_UNSIGNED  go to state 39
+    LHS            go to state 40
+    Call           go to state 41
+    Constant       go to state 43
+
+
+State 69
+
+   41 Product: Product MULT . Unit
+
+    T_int       shift, and go to state 21
+    T_str       shift, and go to state 22
+    T_bool      shift, and go to state 23
+    NAME        shift, and go to state 4
+    LEFT_PARAN  shift, and go to state 26
+    MINUS       shift, and go to state 28
+    NONE_CONST  shift, and go to state 29
+
+    Unit           go to state 95
+    Unit_UNSIGNED  go to state 39
+    LHS            go to state 40
+    Call           go to state 41
+    Constant       go to state 43
+
+
+State 70
+
+   42 Product: Product DIVIDE . Unit
+
+    T_int       shift, and go to state 21
+    T_str       shift, and go to state 22
+    T_bool      shift, and go to state 23
+    NAME        shift, and go to state 4
+    LEFT_PARAN  shift, and go to state 26
+    MINUS       shift, and go to state 28
+    NONE_CONST  shift, and go to state 29
+
+    Unit           go to state 96
+    Unit_UNSIGNED  go to state 39
+    LHS            go to state 40
+    Call           go to state 41
+    Constant       go to state 43
+
+
+State 71
+
+   12 Assignment: LHS ASSN Expression . SEMICOLON
+
+    SEMICOLON  shift, and go to state 97
+
+
+State 72
+
+   53 Call: LHS LEFT_PARAN RIGHT_PARAN .
+
+    $default  reduce using rule 53 (Call)
+
+
+State 73
+
+   54 CalledArgList: Expression .
+
+    $default  reduce using rule 54 (CalledArgList)
+
+
+State 74
+
+   52 Call: LHS LEFT_PARAN CalledArgList . RIGHT_PARAN
+   55 CalledArgList: CalledArgList . COMMA Expression
+
+    RIGHT_PARAN  shift, and go to state 98
+    COMMA        shift, and go to state 99
+
+
+State 75
+
+   51 LHS: LHS LEFT_SQR Expression . RIGHT_SQR
+
+    RIGHT_SQR  shift, and go to state 100
+
+
+State 76
+
+   50 LHS: LHS DOT NAME .
+
+    $default  reduce using rule 50 (LHS)
+
+
+State 77
+
+   14 IfStatement: IF LEFT_PARAN Expression RIGHT_PARAN . Block ELSE Block
+   15            | IF LEFT_PARAN Expression RIGHT_PARAN . Block
+
+    LEFT_BRA  shift, and go to state 101
+
+    Block  go to state 102
+
+
+State 78
+
+   16 WhileLoop: WHILE LEFT_PARAN Expression RIGHT_PARAN . Block
+
+    LEFT_BRA  shift, and go to state 101
+
+    Block  go to state 103
+
+
+State 79
+
+   58 RecordList: NAME COLON . Expression SEMICOLON
+
+    T_int       shift, and go to state 21
+    T_str       shift, and go to state 22
+    T_bool      shift, and go to state 23
+    NAME        shift, and go to state 4
+    LEFT_BRA    shift, and go to state 24
+    NOT         shift, and go to state 25
+    LEFT_PARAN  shift, and go to state 26
+    FUN         shift, and go to state 27
+    MINUS       shift, and go to state 28
+    NONE_CONST  shift, and go to state 29
+
+    Expression     go to state 104
+    Function       go to state 31
+    Boolean        go to state 32
+    Conjunction    go to state 33
+    BoolUnit       go to state 34
+    Predicate      go to state 35
+    Arithmetic     go to state 36
+    Product        go to state 37
+    Unit           go to state 38
+    Unit_UNSIGNED  go to state 39
+    LHS            go to state 40
+    Call           go to state 41
+    Record         go to state 42
+    Constant       go to state 43
+
+
+State 80
+
+   59 RecordList: RecordList NAME . COLON Expression SEMICOLON
+
+    COLON  shift, and go to state 105
+
+
+State 81
+
+   57 Record: LEFT_BRA RecordList RIGHT_BRA .
+
+    $default  reduce using rule 57 (Record)
+
+
+State 82
+
+   48 Unit_UNSIGNED: LEFT_PARAN Boolean RIGHT_PARAN .
+
+    $default  reduce using rule 48 (Unit_UNSIGNED)
+
+
+State 83
+
+   23 ArgList: NAME .
+
+    $default  reduce using rule 23 (ArgList)
+
+
+State 84
+
+   22 Function: FUN LEFT_PARAN RIGHT_PARAN . Block
+
+    LEFT_BRA  shift, and go to state 101
+
+    Block  go to state 106
+
+
+State 85
+
+   21 Function: FUN LEFT_PARAN ArgList . RIGHT_PARAN Block
+   24 ArgList: ArgList . COMMA NAME
+
+    RIGHT_PARAN  shift, and go to state 107
+    COMMA        shift, and go to state 108
+
+
+State 86
+
+   26 Boolean: Conjunction OR Boolean .
+
+    $default  reduce using rule 26 (Boolean)
+
+
+State 87
+
+   28 Conjunction: BoolUnit AND Conjunction .
+
+    $default  reduce using rule 28 (Conjunction)
+
+
+State 88
+
+   38 Arithmetic: Arithmetic PLUS Product .
+   41 Product: Product . MULT Unit
+   42        | Product . DIVIDE Unit
+
+    MULT    shift, and go to state 69
+    DIVIDE  shift, and go to state 70
+
+    $default  reduce using rule 38 (Arithmetic)
+
+
+State 89
+
+   39 Arithmetic: Arithmetic MINUS Product .
+   41 Product: Product . MULT Unit
+   42        | Product . DIVIDE Unit
+
+    MULT    shift, and go to state 69
+    DIVIDE  shift, and go to state 70
+
+    $default  reduce using rule 39 (Arithmetic)
+
+
+State 90
+
+   34 Predicate: Arithmetic GRTNEQ Arithmetic .
+   38 Arithmetic: Arithmetic . PLUS Product
+   39           | Arithmetic . MINUS Product
+
+    PLUS   shift, and go to state 62
+    MINUS  shift, and go to state 63
+
+    $default  reduce using rule 34 (Predicate)
+
+
+State 91
+
+   35 Predicate: Arithmetic LSTNEQ Arithmetic .
+   38 Arithmetic: Arithmetic . PLUS Product
+   39           | Arithmetic . MINUS Product
+
+    PLUS   shift, and go to state 62
+    MINUS  shift, and go to state 63
+
+    $default  reduce using rule 35 (Predicate)
+
+
+State 92
+
+   32 Predicate: Arithmetic GRTN Arithmetic .
+   38 Arithmetic: Arithmetic . PLUS Product
+   39           | Arithmetic . MINUS Product
+
+    PLUS   shift, and go to state 62
+    MINUS  shift, and go to state 63
+
+    $default  reduce using rule 32 (Predicate)
+
+
+State 93
+
+   33 Predicate: Arithmetic LSTN Arithmetic .
+   38 Arithmetic: Arithmetic . PLUS Product
+   39           | Arithmetic . MINUS Product
+
+    PLUS   shift, and go to state 62
+    MINUS  shift, and go to state 63
+
+    $default  reduce using rule 33 (Predicate)
+
+
+State 94
+
+   36 Predicate: Arithmetic EQ Arithmetic .
+   38 Arithmetic: Arithmetic . PLUS Product
+   39           | Arithmetic . MINUS Product
+
+    PLUS   shift, and go to state 62
+    MINUS  shift, and go to state 63
+
+    $default  reduce using rule 36 (Predicate)
+
+
+State 95
+
+   41 Product: Product MULT Unit .
+
+    $default  reduce using rule 41 (Product)
+
+
+State 96
+
+   42 Product: Product DIVIDE Unit .
+
+    $default  reduce using rule 42 (Product)
+
+
+State 97
+
+   12 Assignment: LHS ASSN Expression SEMICOLON .
+
+    $default  reduce using rule 12 (Assignment)
+
+
+State 98
+
+   52 Call: LHS LEFT_PARAN CalledArgList RIGHT_PARAN .
+
+    $default  reduce using rule 52 (Call)
+
+
+State 99
+
+   55 CalledArgList: CalledArgList COMMA . Expression
+
+    T_int       shift, and go to state 21
+    T_str       shift, and go to state 22
+    T_bool      shift, and go to state 23
+    NAME        shift, and go to state 4
+    LEFT_BRA    shift, and go to state 24
+    NOT         shift, and go to state 25
+    LEFT_PARAN  shift, and go to state 26
+    FUN         shift, and go to state 27
+    MINUS       shift, and go to state 28
+    NONE_CONST  shift, and go to state 29
+
+    Expression     go to state 109
+    Function       go to state 31
+    Boolean        go to state 32
+    Conjunction    go to state 33
+    BoolUnit       go to state 34
+    Predicate      go to state 35
+    Arithmetic     go to state 36
+    Product        go to state 37
+    Unit           go to state 38
+    Unit_UNSIGNED  go to state 39
+    LHS            go to state 40
+    Call           go to state 41
+    Record         go to state 42
+    Constant       go to state 43
+
+
+State 100
+
+   51 LHS: LHS LEFT_SQR Expression RIGHT_SQR .
+
+    $default  reduce using rule 51 (LHS)
+
+
+State 101
+
+    4 Block: LEFT_BRA . StatementList RIGHT_BRA
+
+    $default  reduce using rule 3 (StatementList)
+
+    StatementList  go to state 110
+
+
+State 102
+
+   14 IfStatement: IF LEFT_PARAN Expression RIGHT_PARAN Block . ELSE Block
+   15            | IF LEFT_PARAN Expression RIGHT_PARAN Block .
+
+    ELSE  shift, and go to state 111
+
+    $default  reduce using rule 15 (IfStatement)
+
+
+State 103
+
+   16 WhileLoop: WHILE LEFT_PARAN Expression RIGHT_PARAN Block .
+
+    $default  reduce using rule 16 (WhileLoop)
+
+
+State 104
+
+   58 RecordList: NAME COLON Expression . SEMICOLON
+
+    SEMICOLON  shift, and go to state 112
+
+
+State 105
+
+   59 RecordList: RecordList NAME COLON . Expression SEMICOLON
+
+    T_int       shift, and go to state 21
+    T_str       shift, and go to state 22
+    T_bool      shift, and go to state 23
+    NAME        shift, and go to state 4
+    LEFT_BRA    shift, and go to state 24
+    NOT         shift, and go to state 25
+    LEFT_PARAN  shift, and go to state 26
+    FUN         shift, and go to state 27
+    MINUS       shift, and go to state 28
+    NONE_CONST  shift, and go to state 29
+
+    Expression     go to state 113
+    Function       go to state 31
+    Boolean        go to state 32
+    Conjunction    go to state 33
+    BoolUnit       go to state 34
+    Predicate      go to state 35
+    Arithmetic     go to state 36
+    Product        go to state 37
+    Unit           go to state 38
+    Unit_UNSIGNED  go to state 39
+    LHS            go to state 40
+    Call           go to state 41
+    Record         go to state 42
+    Constant       go to state 43
+
+
+State 106
+
+   22 Function: FUN LEFT_PARAN RIGHT_PARAN Block .
+
+    $default  reduce using rule 22 (Function)
+
+
+State 107
+
+   21 Function: FUN LEFT_PARAN ArgList RIGHT_PARAN . Block
+
+    LEFT_BRA  shift, and go to state 101
+
+    Block  go to state 114
+
+
+State 108
+
+   24 ArgList: ArgList COMMA . NAME
+
+    NAME  shift, and go to state 115
+
+
+State 109
+
+   55 CalledArgList: CalledArgList COMMA Expression .
+
+    $default  reduce using rule 55 (CalledArgList)
+
+
+State 110
+
+    2 StatementList: StatementList . Statement
+    4 Block: LEFT_BRA StatementList . RIGHT_BRA
+
+    NAME       shift, and go to state 4
+    GLOBAL     shift, and go to state 5
+    RIGHT_BRA  shift, and go to state 116
+    IF         shift, and go to state 6
+    WHILE      shift, and go to state 7
+    RETURN     shift, and go to state 8
+
+    Statement      go to state 9
+    Global         go to state 10
+    Assignment     go to state 11
+    CallStatement  go to state 12
+    IfStatement    go to state 13
+    WhileLoop      go to state 14
+    Return         go to state 15
+    LHS            go to state 16
+    Call           go to state 17
+
+
+State 111
+
+   14 IfStatement: IF LEFT_PARAN Expression RIGHT_PARAN Block ELSE . Block
+
+    LEFT_BRA  shift, and go to state 101
+
+    Block  go to state 117
+
+
+State 112
+
+   58 RecordList: NAME COLON Expression SEMICOLON .
+
+    $default  reduce using rule 58 (RecordList)
+
+
+State 113
+
+   59 RecordList: RecordList NAME COLON Expression . SEMICOLON
+
+    SEMICOLON  shift, and go to state 118
+
+
+State 114
+
+   21 Function: FUN LEFT_PARAN ArgList RIGHT_PARAN Block .
+
+    $default  reduce using rule 21 (Function)
+
+
+State 115
+
+   24 ArgList: ArgList COMMA NAME .
+
+    $default  reduce using rule 24 (ArgList)
+
+
+State 116
+
+    4 Block: LEFT_BRA StatementList RIGHT_BRA .
+
+    $default  reduce using rule 4 (Block)
+
+
+State 117
+
+   14 IfStatement: IF LEFT_PARAN Expression RIGHT_PARAN Block ELSE Block .
+
+    $default  reduce using rule 14 (IfStatement)
+
+
+State 118
+
+   59 RecordList: RecordList NAME COLON Expression SEMICOLON .
+
+    $default  reduce using rule 59 (RecordList)

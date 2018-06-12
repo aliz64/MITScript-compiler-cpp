@@ -1,0 +1,59 @@
+function
+{
+	functions =
+	[
+
+	],
+	constants = [None, 50, 0, "", 1, "hello"],
+	parameter_count = 0,
+	local_vars = [],
+	local_ref_vars = [],
+	free_vars = [],
+	names = [print, intcast, input, iterations, i, j, key],
+	instructions = 
+	[
+		load_func	0
+		alloc_closure	0
+		store_global	0
+		load_func	1
+		alloc_closure	0
+		store_global	1
+		load_func	2
+		alloc_closure	0
+		store_global	2
+		load_const	1
+		store_global	3
+		load_const	2
+		store_global	4
+		load_global	4
+		load_global	3
+		swap
+		gt
+		if	2
+		goto	21
+		load_const	2
+		store_global	5
+		load_const	3
+		store_global	6
+		load_global	5
+		load_const	4
+		swap
+		gt
+		if	2
+		goto	6
+		load_global	5
+		load_const	4
+		add
+		store_global	5
+		goto	-10
+		load_global	4
+		load_const	4
+		add
+		store_global	4
+		goto	-25
+		load_global	0
+		load_const	5
+		call	1
+		pop
+	]
+}

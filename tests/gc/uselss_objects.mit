@@ -1,0 +1,11 @@
+j = 0;
+while (j < 10) {
+  huge = {};
+  i = 0;
+  while (i < 10000) {
+    huge[""+i] = i;
+    i = i + 1;
+  }
+  j = j+1;
+}
+print("pass");

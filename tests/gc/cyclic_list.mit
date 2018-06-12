@@ -1,0 +1,29 @@
+Node = fun(v) {
+  this = {
+    value: v;
+    next: None;
+  };
+  return this;
+};
+
+i = 0;
+n = Node(1);
+curr = n;
+while (i < 1000) {
+  m = Node(i);
+  curr.next = m;
+  curr = m;
+  i = i + 1;
+}
+curr.next = n;
+
+// make nodes no longer reference-able
+curr = None;
+n = None;
+
+j = 0;
+while (j < 1000000) {
+  j = j + 1;
+}
+
+print("pass");

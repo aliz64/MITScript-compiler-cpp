@@ -1,0 +1,68 @@
+function
+{
+	functions =
+	[
+		function
+		{
+			functions = [],
+			constants = [None, "Value ", 1],
+			parameter_count = 1,
+			local_vars = [x],
+			local_ref_vars = [],
+			free_vars = [],
+			names = [print],
+			instructions = 
+			[
+				load_global	0
+				load_const	1
+				load_local	0
+				load_const	2
+				sub
+				add
+				call	1
+				pop
+				load_local	0
+				load_const	2
+				sub
+				return
+			]
+		}
+	],
+	constants = [None, "0", 1, 0],
+	parameter_count = 0,
+	local_vars = [],
+	local_ref_vars = [],
+	free_vars = [],
+	names = [print, intcast, input, foo, x],
+	instructions = 
+	[
+		load_func	0
+		alloc_closure	0
+		store_global	0
+		load_func	1
+		alloc_closure	0
+		store_global	1
+		load_func	2
+		alloc_closure	0
+		store_global	2
+		load_func	3
+		alloc_closure	0
+		store_global	3
+		load_global	1
+		load_const	1
+		call	1
+		store_global	4
+		load_global	4
+		load_const	2
+		add
+		load_const	3
+		gt
+		if	2
+		goto	6
+		load_global	3
+		load_global	4
+		call	1
+		store_global	4
+		goto	-11
+	]
+}

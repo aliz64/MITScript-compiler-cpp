@@ -1,0 +1,66 @@
+function
+{
+	functions =
+	[
+
+	],
+	constants = [None, 5, 6, 8, "All should print 8", "c", "d"],
+	parameter_count = 0,
+	local_vars = [],
+	local_ref_vars = [],
+	free_vars = [],
+	names = [print, intcast, input, record1, record2, a, b, c, d],
+	instructions = 
+	[
+		load_func	0
+		alloc_closure	0
+		store_global	0
+		load_func	1
+		alloc_closure	0
+		store_global	1
+		load_func	2
+		alloc_closure	0
+		store_global	2
+		alloc_record
+		dup
+		load_const	1
+		field_store	5
+		dup
+		load_const	2
+		field_store	6
+		dup
+		alloc_record
+		field_store	7
+		store_global	3
+		load_global	3
+		field_load	7
+		store_global	4
+		load_global	4
+		load_const	3
+		field_store	8
+		load_global	0
+		load_const	4
+		call	1
+		pop
+		load_global	0
+		load_global	3
+		field_load	7
+		field_load	8
+		call	1
+		pop
+		load_global	0
+		load_global	3
+		load_const	5
+		index_load
+		field_load	8
+		call	1
+		pop
+		load_global	0
+		load_global	3
+		field_load	7
+		load_const	6
+		index_load
+		call	1
+		pop
+	]
+}

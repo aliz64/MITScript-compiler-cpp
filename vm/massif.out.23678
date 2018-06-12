@@ -1,0 +1,642 @@
+desc: (none)
+cmd: ./binaries/mitscript xtest.mit -s -mem 4
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=30468144
+mem_heap_B=312314
+mem_heap_extra_B=86430
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=47923504
+mem_heap_B=445434
+mem_heap_extra_B=139678
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=70833664
+mem_heap_B=620154
+mem_heap_extra_B=209566
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=98107664
+mem_heap_B=828154
+mem_heap_extra_B=292766
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=115563024
+mem_heap_B=961274
+mem_heap_extra_B=346014
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=133018384
+mem_heap_B=1094394
+mem_heap_extra_B=399262
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=150473744
+mem_heap_B=1227514
+mem_heap_extra_B=452510
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=167929104
+mem_heap_B=1360634
+mem_heap_extra_B=505758
+mem_stacks_B=0
+heap_tree=detailed
+n4: 1360634 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 630560 0x42C8C8: Boolean* CollectedHeap::allocate<Boolean, bool>(bool) (gc.h:140)
+  n1: 630560 0x427D30: Interpreter::execute(Instruction) (Interpreter.cpp:492)
+   n1: 630560 0x425D81: Interpreter::interpret(Function*) (Interpreter.cpp:80)
+    n0: 630560 0x403522: main (bc-parser-driver.cpp:82)
+ n1: 630520 0x42B69C: Integer* CollectedHeap::allocate<Integer, int>(int) (gc.h:140)
+  n1: 630520 0x428263: Interpreter::execute(Instruction) (Interpreter.cpp:564)
+   n1: 630520 0x425D81: Interpreter::interpret(Function*) (Interpreter.cpp:80)
+    n0: 630520 0x403522: main (bc-parser-driver.cpp:82)
+ n1: 72704 0x4EBAEFE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+  n1: 72704 0x40106B8: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x40107C9: _dl_init (dl-init.c:30)
+    n1: 72704 0x4000C68: ??? (in /lib/x86_64-linux-gnu/ld-2.23.so)
+     n1: 72704 0x3: ???
+      n1: 72704 0xFFF000199: ???
+       n1: 72704 0xFFF0001AE: ???
+        n1: 72704 0xFFF0001B8: ???
+         n1: 72704 0xFFF0001BB: ???
+          n0: 72704 0xFFF0001C0: ???
+ n0: 26850 in 74 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=9
+#-----------
+time=196559046
+mem_heap_B=1578978
+mem_heap_extra_B=593110
+mem_stacks_B=0
+heap_tree=peak
+n4: 1578978 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 739720 0x42C8C8: Boolean* CollectedHeap::allocate<Boolean, bool>(bool) (gc.h:140)
+  n1: 739720 0x427D30: Interpreter::execute(Instruction) (Interpreter.cpp:492)
+   n1: 739720 0x425D81: Interpreter::interpret(Function*) (Interpreter.cpp:80)
+    n0: 739720 0x403522: main (bc-parser-driver.cpp:82)
+ n1: 739680 0x42B69C: Integer* CollectedHeap::allocate<Integer, int>(int) (gc.h:140)
+  n1: 739680 0x428263: Interpreter::execute(Instruction) (Interpreter.cpp:564)
+   n1: 739680 0x425D81: Interpreter::interpret(Function*) (Interpreter.cpp:80)
+    n0: 739680 0x403522: main (bc-parser-driver.cpp:82)
+ n1: 72704 0x4EBAEFE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+  n1: 72704 0x40106B8: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x40107C9: _dl_init (dl-init.c:30)
+    n1: 72704 0x4000C68: ??? (in /lib/x86_64-linux-gnu/ld-2.23.so)
+     n1: 72704 0x3: ???
+      n1: 72704 0xFFF000199: ???
+       n1: 72704 0xFFF0001AE: ???
+        n1: 72704 0xFFF0001B8: ???
+         n1: 72704 0xFFF0001BB: ???
+          n0: 72704 0xFFF0001C0: ???
+ n0: 26874 in 75 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=10
+#-----------
+time=224925274
+mem_heap_B=269794
+mem_heap_extra_B=69422
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=242380634
+mem_heap_B=402914
+mem_heap_extra_B=122670
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=259835994
+mem_heap_B=536034
+mem_heap_extra_B=175918
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=277291354
+mem_heap_B=669154
+mem_heap_extra_B=229166
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=294746714
+mem_heap_B=802274
+mem_heap_extra_B=282414
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=312202074
+mem_heap_B=935394
+mem_heap_extra_B=335662
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=329657434
+mem_heap_B=1068514
+mem_heap_extra_B=388910
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=347112794
+mem_heap_B=1201634
+mem_heap_extra_B=442158
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=364568154
+mem_heap_B=1334754
+mem_heap_extra_B=495406
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=19
+#-----------
+time=382023514
+mem_heap_B=1467874
+mem_heap_extra_B=548654
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=399478890
+mem_heap_B=870810
+mem_heap_extra_B=309814
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=412572874
+mem_heap_B=175354
+mem_heap_extra_B=31646
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=430028234
+mem_heap_B=308474
+mem_heap_extra_B=84894
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=447483594
+mem_heap_B=441594
+mem_heap_extra_B=138142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=464938954
+mem_heap_B=574714
+mem_heap_extra_B=191390
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=478030474
+mem_heap_B=674554
+mem_heap_extra_B=231326
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=495485834
+mem_heap_B=807674
+mem_heap_extra_B=284574
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=512941194
+mem_heap_B=940794
+mem_heap_extra_B=337822
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=530396554
+mem_heap_B=1073914
+mem_heap_extra_B=391070
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=29
+#-----------
+time=547851914
+mem_heap_B=1207034
+mem_heap_extra_B=444318
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=565307274
+mem_heap_B=1340154
+mem_heap_extra_B=497566
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=582762634
+mem_heap_B=1473274
+mem_heap_extra_B=550814
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=600217998
+mem_heap_B=697370
+mem_heap_extra_B=240438
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=626403514
+mem_heap_B=280594
+mem_heap_extra_B=73742
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=643858874
+mem_heap_B=413714
+mem_heap_extra_B=126990
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=661314234
+mem_heap_B=546834
+mem_heap_extra_B=180238
+mem_stacks_B=0
+heap_tree=detailed
+n5: 546834 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 223720 0x42C8C8: Boolean* CollectedHeap::allocate<Boolean, bool>(bool) (gc.h:140)
+  n1: 223720 0x427D30: Interpreter::execute(Instruction) (Interpreter.cpp:492)
+   n1: 223720 0x425D81: Interpreter::interpret(Function*) (Interpreter.cpp:80)
+    n0: 223720 0x403522: main (bc-parser-driver.cpp:82)
+ n1: 223720 0x42B69C: Integer* CollectedHeap::allocate<Integer, int>(int) (gc.h:140)
+  n1: 223720 0x428263: Interpreter::execute(Instruction) (Interpreter.cpp:564)
+   n1: 223720 0x425D81: Interpreter::interpret(Function*) (Interpreter.cpp:80)
+    n0: 223720 0x403522: main (bc-parser-driver.cpp:82)
+ n1: 72704 0x4EBAEFE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+  n1: 72704 0x40106B8: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x40107C9: _dl_init (dl-init.c:30)
+    n1: 72704 0x4000C68: ??? (in /lib/x86_64-linux-gnu/ld-2.23.so)
+     n1: 72704 0x3: ???
+      n1: 72704 0xFFF000199: ???
+       n1: 72704 0xFFF0001AE: ???
+        n1: 72704 0xFFF0001B8: ???
+         n1: 72704 0xFFF0001BB: ???
+          n0: 72704 0xFFF0001C0: ???
+ n2: 16602 0x438842: yyalloc(unsigned long, void*) (lexer.cpp:2168)
+  n1: 16386 0x43797D: yy_create_buffer(_IO_FILE*, int, void*) (lexer.cpp:1560)
+   n1: 16386 0x434988: yylex(YYSTYPE*, YYLTYPE*, void*) (lexer.cpp:766)
+    n1: 16386 0x43915B: yyparse(void*, Statement*&) (parser.cpp:1419)
+     n1: 16386 0x41815D: Compiler::parseSourceAST(_IO_FILE*) (Compiler.cpp:21)
+      n0: 16386 0x403341: main (bc-parser-driver.cpp:49)
+  n0: 216 in 3 places, all below massif's threshold (1.00%)
+ n0: 10088 in 74 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=36
+#-----------
+time=678769594
+mem_heap_B=679954
+mem_heap_extra_B=233486
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=696224954
+mem_heap_B=813074
+mem_heap_extra_B=286734
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=713680314
+mem_heap_B=946194
+mem_heap_extra_B=339982
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=731135674
+mem_heap_B=1079314
+mem_heap_extra_B=393230
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=748591034
+mem_heap_B=1212434
+mem_heap_extra_B=446478
+mem_stacks_B=0
+heap_tree=detailed
+n5: 1212434 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 556520 0x42C8C8: Boolean* CollectedHeap::allocate<Boolean, bool>(bool) (gc.h:140)
+  n1: 556520 0x427D30: Interpreter::execute(Instruction) (Interpreter.cpp:492)
+   n1: 556520 0x425D81: Interpreter::interpret(Function*) (Interpreter.cpp:80)
+    n0: 556520 0x403522: main (bc-parser-driver.cpp:82)
+ n1: 556520 0x42B69C: Integer* CollectedHeap::allocate<Integer, int>(int) (gc.h:140)
+  n1: 556520 0x428263: Interpreter::execute(Instruction) (Interpreter.cpp:564)
+   n1: 556520 0x425D81: Interpreter::interpret(Function*) (Interpreter.cpp:80)
+    n0: 556520 0x403522: main (bc-parser-driver.cpp:82)
+ n1: 72704 0x4EBAEFE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+  n1: 72704 0x40106B8: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x40107C9: _dl_init (dl-init.c:30)
+    n1: 72704 0x4000C68: ??? (in /lib/x86_64-linux-gnu/ld-2.23.so)
+     n1: 72704 0x3: ???
+      n1: 72704 0xFFF000199: ???
+       n1: 72704 0xFFF0001AE: ???
+        n1: 72704 0xFFF0001B8: ???
+         n1: 72704 0xFFF0001BB: ???
+          n0: 72704 0xFFF0001C0: ???
+ n1: 16602 0x438842: yyalloc(unsigned long, void*) (lexer.cpp:2168)
+  n0: 16602 in 4 places, all below massif's threshold (1.00%)
+ n0: 10088 in 74 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=41
+#-----------
+time=766046394
+mem_heap_B=1345554
+mem_heap_extra_B=499726
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=783501754
+mem_heap_B=1478674
+mem_heap_extra_B=552974
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=800957124
+mem_heap_B=523290
+mem_heap_extra_B=170806
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=44
+#-----------
+time=827142634
+mem_heap_B=285994
+mem_heap_extra_B=75902
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=45
+#-----------
+time=844597994
+mem_heap_B=419114
+mem_heap_extra_B=129150
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=862053354
+mem_heap_B=552234
+mem_heap_extra_B=182398
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=879508714
+mem_heap_B=685354
+mem_heap_extra_B=235646
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=896964074
+mem_heap_B=818474
+mem_heap_extra_B=288894
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=49
+#-----------
+time=914419434
+mem_heap_B=951594
+mem_heap_extra_B=342142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=50
+#-----------
+time=927510954
+mem_heap_B=1051434
+mem_heap_extra_B=382078
+mem_stacks_B=0
+heap_tree=detailed
+n5: 1051434 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 476040 0x42B69C: Integer* CollectedHeap::allocate<Integer, int>(int) (gc.h:140)
+  n1: 476040 0x428263: Interpreter::execute(Instruction) (Interpreter.cpp:564)
+   n1: 476040 0x425D81: Interpreter::interpret(Function*) (Interpreter.cpp:80)
+    n0: 476040 0x403522: main (bc-parser-driver.cpp:82)
+ n1: 476000 0x42C8C8: Boolean* CollectedHeap::allocate<Boolean, bool>(bool) (gc.h:140)
+  n1: 476000 0x427D30: Interpreter::execute(Instruction) (Interpreter.cpp:492)
+   n1: 476000 0x425D81: Interpreter::interpret(Function*) (Interpreter.cpp:80)
+    n0: 476000 0x403522: main (bc-parser-driver.cpp:82)
+ n1: 72704 0x4EBAEFE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+  n1: 72704 0x40106B8: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x40107C9: _dl_init (dl-init.c:30)
+    n1: 72704 0x4000C68: ??? (in /lib/x86_64-linux-gnu/ld-2.23.so)
+     n1: 72704 0x3: ???
+      n1: 72704 0xFFF000199: ???
+       n1: 72704 0xFFF0001AE: ???
+        n1: 72704 0xFFF0001B8: ???
+         n1: 72704 0xFFF0001BB: ???
+          n0: 72704 0xFFF0001C0: ???
+ n2: 16602 0x438842: yyalloc(unsigned long, void*) (lexer.cpp:2168)
+  n1: 16386 0x43797D: yy_create_buffer(_IO_FILE*, int, void*) (lexer.cpp:1560)
+   n1: 16386 0x434988: yylex(YYSTYPE*, YYLTYPE*, void*) (lexer.cpp:766)
+    n1: 16386 0x43915B: yyparse(void*, Statement*&) (parser.cpp:1419)
+     n1: 16386 0x41815D: Compiler::parseSourceAST(_IO_FILE*) (Compiler.cpp:21)
+      n0: 16386 0x403341: main (bc-parser-driver.cpp:49)
+  n0: 216 in 3 places, all below massif's threshold (1.00%)
+ n0: 10088 in 74 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=51
+#-----------
+time=940602474
+mem_heap_B=1151274
+mem_heap_extra_B=422014
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=52
+#-----------
+time=953693994
+mem_heap_B=1251114
+mem_heap_extra_B=461950
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=966785514
+mem_heap_B=1350954
+mem_heap_extra_B=501886
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=54
+#-----------
+time=979877034
+mem_heap_B=1450794
+mem_heap_extra_B=541822
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=55
+#-----------
+time=992968554
+mem_heap_B=1550634
+mem_heap_extra_B=581758
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=56
+#-----------
+time=1006062554
+mem_heap_B=124994
+mem_heap_extra_B=11502
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=1019154074
+mem_heap_B=224834
+mem_heap_extra_B=51438
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=58
+#-----------
+time=1032245594
+mem_heap_B=324674
+mem_heap_extra_B=91374
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=59
+#-----------
+time=1045337114
+mem_heap_B=424514
+mem_heap_extra_B=131310
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=60
+#-----------
+time=1058428634
+mem_heap_B=524354
+mem_heap_extra_B=171246
+mem_stacks_B=0
+heap_tree=detailed
+n5: 524354 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 212480 0x42C8C8: Boolean* CollectedHeap::allocate<Boolean, bool>(bool) (gc.h:140)
+  n1: 212480 0x427D30: Interpreter::execute(Instruction) (Interpreter.cpp:492)
+   n1: 212480 0x425D81: Interpreter::interpret(Function*) (Interpreter.cpp:80)
+    n0: 212480 0x403522: main (bc-parser-driver.cpp:82)
+ n1: 212480 0x42B69C: Integer* CollectedHeap::allocate<Integer, int>(int) (gc.h:140)
+  n1: 212480 0x428263: Interpreter::execute(Instruction) (Interpreter.cpp:564)
+   n1: 212480 0x425D81: Interpreter::interpret(Function*) (Interpreter.cpp:80)
+    n0: 212480 0x403522: main (bc-parser-driver.cpp:82)
+ n1: 72704 0x4EBAEFE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+  n1: 72704 0x40106B8: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x40107C9: _dl_init (dl-init.c:30)
+    n1: 72704 0x4000C68: ??? (in /lib/x86_64-linux-gnu/ld-2.23.so)
+     n1: 72704 0x3: ???
+      n1: 72704 0xFFF000199: ???
+       n1: 72704 0xFFF0001AE: ???
+        n1: 72704 0xFFF0001B8: ???
+         n1: 72704 0xFFF0001BB: ???
+          n0: 72704 0xFFF0001C0: ???
+ n2: 16602 0x438842: yyalloc(unsigned long, void*) (lexer.cpp:2168)
+  n1: 16386 0x43797D: yy_create_buffer(_IO_FILE*, int, void*) (lexer.cpp:1560)
+   n1: 16386 0x434988: yylex(YYSTYPE*, YYLTYPE*, void*) (lexer.cpp:766)
+    n1: 16386 0x43915B: yyparse(void*, Statement*&) (parser.cpp:1419)
+     n1: 16386 0x41815D: Compiler::parseSourceAST(_IO_FILE*) (Compiler.cpp:21)
+      n0: 16386 0x403341: main (bc-parser-driver.cpp:49)
+  n0: 216 in 3 places, all below massif's threshold (1.00%)
+ n0: 10088 in 74 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=61
+#-----------
+time=1071520154
+mem_heap_B=624194
+mem_heap_extra_B=211182
+mem_stacks_B=0
+heap_tree=empty
